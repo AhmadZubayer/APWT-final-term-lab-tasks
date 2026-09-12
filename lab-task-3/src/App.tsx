@@ -21,11 +21,10 @@ const DashboardContent = () => {
     <div className={`dashboard-container ${theme}`}>
       <DashboardHeader
         title="Student Dashboard"
-        tagline="Global State & Student Registration"
       />
 
       <section className="dashboard-overview">
-        <h2>Dashboard Summary</h2>
+        <h2>Dashboard </h2>
         <div className="stats-row">
           <StatBadge label="Total Enrolled" value={students.length} />
           <StatBadge label="Currently Displayed" value={filteredStudents.length} />
@@ -43,7 +42,7 @@ const DashboardContent = () => {
       <section className="students-section" id="students">
         <h2>Enrolled Students</h2>
         {filteredStudents.length === 0 ? (
-          <p className="no-students">No students match your search.</p>
+          <p className="no-students">No students found.</p>
         ) : (
           <div className="student-grid">
             {filteredStudents.map((student) => (
