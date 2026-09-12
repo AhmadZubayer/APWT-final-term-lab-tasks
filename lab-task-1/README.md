@@ -1,75 +1,40 @@
-# React + TypeScript + Vite
+﻿# LAB 01 - Student Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A static React dashboard using TSX, arrow functions, basic Tailwind classes, and custom CSS.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Components
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- App passes sample data to four StudentCard components and composes the page.
+- DashboardHeader receives a title and tagline. Its navigation links jump to page sections.
+- StudentCard receives name, id, avatar (initials), gpa, major, credits, and courses.
+- CourseTag receives courseName and color to display a course pill.
+- StatBadge receives label and value. It is reused in Overview and StudentCard.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Explaining the code
 
+1. Each component is an arrow function that returns JSX.
+2. Props pass information from a parent to a child.
+3. Destructuring reads individual values from props.
+4. The courses.map arrow function renders one CourseTag per course.
+5. TypeScript types check props during development and compilation.
+6. Component.propTypes describes runtime validation rules. React 19 does not run these automatically, so checkPropTypes is called explicitly.
+7. App accepts no props, so App.propTypes is empty.
+8. index.css defines nine CSS variables for shared colors, font size, and spacing.
+9. App.css uses the variables; Tailwind classes handle simple layout, sizing, and spacing.
+10. md:grid-cols-2 makes the cards use two columns on wider screens.
+
+No state, effects, routing library, or backend is needed for this static lab.
+
+## Checks
+
+```sh
+npm run build
+npm run lint
 ```

@@ -1,122 +1,95 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import DashboardHeader from './components/DashboardHeader';
+import StudentCard from './components/StudentCard';
+import StatBadge from './components/StatBadge';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const studentsData = [
+  {
+    id: '21-44832-2',
+    name: 'Ahmad Zubayer',
+    avatar: '/avatar.png',
+    gpa: 3.85,
+    major: 'Computer Science',
+    credits: 96,
+    courses: [
+      { courseName: 'Advanced Web Tech', color: '#2563eb' },
+      { courseName: 'Compiler Design', color: '#7c3aed' },
+    ],
+  },
+  {
+    id: '21-44833-2',
+    name: 'Sohag Islam',
+    avatar: '/avatar.png',
+    gpa: 3.92,
+    major: 'Software Engineering',
+    credits: 110,
+    courses: [
+      { courseName: 'Machine Learning', color: '#059669' },
+      { courseName: 'Cloud Computing', color: '#0284c7' },
+    ],
+  },
+  {
+    id: '21-44834-2',
+    name: 'SM Zisan',
+    avatar: '/avatar.png',
+    gpa: 3.65,
+    major: 'Computer Science',
+    credits: 84,
+    courses: [
+      { courseName: 'Computer Networks', color: '#d97706' },
+      { courseName: 'Cyber Security', color: '#dc2626' },
+    ],
+  },
+  {
+    id: '21-44835-2',
+    name: 'Naveed Nayon',
+    avatar: '/avatar.png',
+    gpa: 3.78,
+    major: 'Data Science',
+    credits: 90,
+    courses: [
+      { courseName: 'Data Mining', color: '#db2777' },
+      { courseName: 'Deep Learning', color: '#4f46e5' },
+    ],
+  },
+];
 
+const App = () => {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="dashboard-container">
+      <DashboardHeader
+        title="Student Dashboard"
+        tagline="Overview of registered students and courses"
+      />
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+      <section className="dashboard-overview">
+        <h2>Dashboard Summary</h2>
+        <div className="stats-row">
+          <StatBadge label="Total Students" value={studentsData.length} />
+          <StatBadge label="Average GPA" value="3.80" />
+          <StatBadge label="Active Term" value="Spring 2026" />
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+      <section className="students-section">
+        <h2>Enrolled Students</h2>
+        <div className="student-grid">
+          {studentsData.map((student) => (
+            <StudentCard
+              key={student.id}
+              name={student.name}
+              id={student.id}
+              avatar={student.avatar}
+              gpa={student.gpa}
+              major={student.major}
+              credits={student.credits}
+              courses={student.courses}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+};
 
-export default App
+export default App;
