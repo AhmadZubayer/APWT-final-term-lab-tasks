@@ -1,58 +1,8 @@
 import DashboardHeader from './components/DashboardHeader';
 import StudentCard from './components/StudentCard';
 import StatBadge from './components/StatBadge';
+import studentsData from './studentList.json';
 import './App.css';
-
-const studentsData = [
-  {
-    id: '23-54734-3',
-    name: 'Ahmad Zubayer',
-    avatar: '/avatar.png',
-    gpa: 3.85,
-    major: 'Computer Science',
-    credits: 96,
-    courses: [
-      { courseName: 'Advanced Web Tech', color: '#2563eb' },
-      { courseName: 'Compiler Design', color: '#7c3aed' },
-    ],
-  },
-  {
-    id: '21-44833-2',
-    name: 'Sohag Islam',
-    avatar: '/avatar.png',
-    gpa: 3.92,
-    major: 'Software Engineering',
-    credits: 110,
-    courses: [
-      { courseName: 'Machine Learning', color: '#059669' },
-      { courseName: 'Cloud Computing', color: '#0284c7' },
-    ],
-  },
-  {
-    id: '21-44834-2',
-    name: 'SM Zisan',
-    avatar: '/avatar.png',
-    gpa: 3.65,
-    major: 'Computer Science',
-    credits: 84,
-    courses: [
-      { courseName: 'Computer Networks', color: '#d97706' },
-      { courseName: 'Cyber Security', color: '#dc2626' },
-    ],
-  },
-  {
-    id: '21-44835-2',
-    name: 'Naveed Nayon',
-    avatar: '/avatar.png',
-    gpa: 3.78,
-    major: 'Data Science',
-    credits: 90,
-    courses: [
-      { courseName: 'Data Mining', color: '#db2777' },
-      { courseName: 'Deep Learning', color: '#4f46e5' },
-    ],
-  },
-];
 
 const App = () => {
   return (

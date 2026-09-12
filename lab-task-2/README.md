@@ -1,75 +1,19 @@
-# React + TypeScript + Vite
+# LAB 01
+## React Components, Props & Custom Styling
+**Build the static UI shell of a Student Dashboard**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Objective
+Create a static Student Dashboard with reusable React components. Students will learn component decomposition, passing data through props, and applying a consistent design system using custom CSS or CSS Modules.
 
-Currently, two official plugins are available:
+### Topics Covered
+- **React Components** — functional components and JSX
+- **Reusable Components** — building generic, configurable UI pieces
+- **Props** — passing and validating data between components
+- **Styling Components** — custom CSS with CSS variables (design tokens)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+### Tasks
+1. **StudentCard Component** — Create a StudentCard reusable component that accepts props: `name`, `id`, `avatar`, `gpa`, and `major`. Render at least 4 student cards on the page.
+2. **CourseTag Component** — Build a CourseTag component that accepts a `courseName` and `color` prop. It should render a styled pill/badge. Use it inside StudentCard to show enrolled courses.
+3. **StatBadge Component** — Create a StatBadge component that shows a label-value pair (e.g., `GPA: 3.8`, `Credits: 90`). Reuse it in at least two different places in the dashboard.
+4. **DashboardHeader & Styling** — Build a DashboardHeader component with a title, tagline, and navigation bar. Style the entire application using a custom CSS file — define at least 5 CSS custom properties (variables) for colors, font sizes, and spacing.
+5. **App Composition & PropTypes** — Compose all components inside a main App component and ensure proper parent-to-child prop flow. Add PropTypes validation for all components.
